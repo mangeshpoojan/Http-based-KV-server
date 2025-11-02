@@ -1,7 +1,7 @@
 services:
   db:
     image: mysql:8
-    platform: linux/amd64        # or linux/arm64/v8 depending on compatibility
+    platform: linux/amd64        
     container_name: go-mysql
     restart: always
     environment:
@@ -16,7 +16,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    platform: linux/amd64        # match platform for consistency
+    platform: linux/amd64        
     container_name: myadmin
     restart: always
     ports:
