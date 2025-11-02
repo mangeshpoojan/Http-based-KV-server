@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:8
+    platform: linux/amd64        # or linux/arm64/v8 depending on compatibility
+    container_name: go-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: KV_store
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    platform: linux/amd64        # match platform for consistency
+    container_name: myadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: admin
+      PMA_PASSWORD: admin123
+      PMA_ABSOLUTE_URI: http://localhost:8080/
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
+
