@@ -678,8 +678,8 @@ func D_update(res http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Println("<file_name> <port_no>")
+	if len(os.Args) < 3 {
+		fmt.Println("<file_name> <port_no> <C or D>")
 		return
 	}
 
@@ -713,19 +713,28 @@ func main() {
 		panic(err)
 	}
 
-	// http routes (with cache)
+	if os.Args[2] == "C" {
 
-	http.HandleFunc("/C/create", C_create)
-	http.HandleFunc("/C/update", C_update)
-	http.HandleFunc("/C/read", C_fetch)
-	http.HandleFunc("/C/delete", C_del)
+		// http routes (with cache)
 
-	// http routes (without cache)
+		http.HandleFunc("/C/create", C_create)
+		http.HandleFunc("/C/update", C_update)
+		http.HandleFunc("/C/read", C_fetch)
+		http.HandleFunc("/C/delete", C_del)
 
-	http.HandleFunc("/D/create", D_create)
-	http.HandleFunc("/D/update", D_update)
-	http.HandleFunc("/D/read", D_fetch)
-	http.HandleFunc("/D/delete", D_del)
+	} else if os.Args[2] == "D" {
+
+		// http routes (without cache)
+
+		http.HandleFunc("/D/create", D_create)
+		http.HandleFunc("/D/update", D_update)
+		http.HandleFunc("/D/read", D_fetch)
+		http.HandleFunc("/D/delete", D_del)
+
+	} else {
+		fmt.Println("<file_name> <port_no> <C or D>")
+		return
+	}
 
 	// Port number
 
