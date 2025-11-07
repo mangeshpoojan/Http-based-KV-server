@@ -31,12 +31,12 @@ Access phpMyAdmin in your browser at:
 [http://localhost:8080](http://localhost:8080)
 
 ### 3. Start the Go HTTP Server
-Run your Go server on port 6000 with cache:
+Run the Go server on port 6000 with cache:
 ```bash
 go run server.go :6000 C
 ```
 
-Run your Go server on port 6000 without cache:
+Run the Go server on port 6000 without cache:
 ```bash
 go run server.go :6000 D
 ```
@@ -129,12 +129,15 @@ curl "http://localhost:6000/D/delete?key=1"
 ## 🧱 Project Structure
 
 ```
-├── server.go          # Go HTTP server (routes + logic)
-├── crud.sh            # Bash for CRUD operations
-├── docker-compose.yml # MySQL + phpMyAdmin setup
-├── go.mod             # Go module file
-├── go.sum             # Go dependency
-└── README.md          # Project documentation
+├── server.go               # Go HTTP server (routes + logic)
+├── crud.sh                 # Bash for CRUD operations
+├── docker-compose.yml      # MySQL + phpMyAdmin setup
+├── go.mod                  # Go module file
+├── go.sum                  # Go dependency
+├── architecture.drawio     # architecture
+├── assets/
+│   └── architecture.png    # png file of architecture
+└── README.md               # Project documentation
 ```
 
 ---
@@ -157,5 +160,5 @@ curl "http://localhost:6000/D/delete?key=1"
 
 ## 👤 Author
 
-Developed by Mangesh Poojan
-GitHub: https://github.com/mangeshpoojan
+- Developed by Mangesh Poojan
+- GitHub: https://github.com/mangeshpoojan
