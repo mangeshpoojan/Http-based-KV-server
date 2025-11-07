@@ -1,4 +1,4 @@
-# 🗄️ Go HTTP CRUD Server with MySQL & phpMyAdmin
+# Go HTTP CRUD Server with MySQL & phpMyAdmin
 
 This project implements a Go-based HTTP server supporting full CRUD operations (Create, Read, Update, Delete) across multiple route groups.
 The server connects to a MySQL database managed via phpMyAdmin, both running locally through Docker Compose.
@@ -7,7 +7,7 @@ A Bash script (crud.sh) is included for quick command-line interaction with the 
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### 1. Clone the Repository
 ```bash
@@ -43,7 +43,7 @@ go run server.go :6000 D
 
 ---
 
-## ⚙️ Usage via Bash Script
+## Usage via Bash Script
 
 The repository includes a helper script named `crud.sh` for easily testing the CRUD endpoints.
 
@@ -64,7 +64,7 @@ The repository includes a helper script named `crud.sh` for easily testing the C
 
 ---
 
-## 🌐 HTTP Routes
+## HTTP Routes
 
 This HTTP server exposes 8 routes, divided between two route groups — C and D.
 
@@ -79,13 +79,13 @@ This HTTP server exposes 8 routes, divided between two route groups — C and D.
 | /D/update | POST | Update (hits the DB directly) |
 | /D/delete | POST | Delete (hits the DB directly) |
 
-> ⚠️ **Notes:**
+> **Notes:**
 > - `create` and `read` routes only support GET requests.
 > - `update` and `delete` routes only support POST requests.
 
 ---
 
-## 🧾 JSON Request Format
+## JSON Request Format
 
 For POST requests (`update`, `delete`), send data in the following JSON format:
 
@@ -98,7 +98,7 @@ For POST requests (`update`, `delete`), send data in the following JSON format:
 
 ---
 
-## 📦 Example Commands
+## Example Commands
 
 ### Create (POST)
 ```bash
@@ -126,7 +126,7 @@ curl "http://localhost:6000/D/delete?key=1"
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
 ```
 ├── server.go               # Go HTTP server (routes + logic)
@@ -142,7 +142,7 @@ curl "http://localhost:6000/D/delete?key=1"
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - Go (Golang) — HTTP server and JSON handling
 - MySQL — Persistent storage backend
@@ -152,13 +152,13 @@ curl "http://localhost:6000/D/delete?key=1"
 
 ---
 
-## 🚧 Future Improvements
+## Future Improvements
 
 - abhi sochne do pls
 
 ---
 
-## 👤 Author
+## Author
 
 - Developed by Mangesh Poojan
 - GitHub: https://github.com/mangeshpoojan
