@@ -149,6 +149,16 @@ func (some *LRUCache) addToFront(node *Node) {
 }
 
 func (some *LRUCache) removeNode(node *Node) {
+
+	// WB the data to DB
+	if _, err := db.Exec("UPDATE kv_store SET value_col = ? WHERE key_col = ?", some.cache[node.key], node.key); err != nil {
+		panic(err)
+	}
+	if log == 1 {
+		fmt.Println("evicted :", node.key)
+	}
+
+	// remove the node
 	if node.prev != nil {
 		node.prev.next = node.next
 	} else {
