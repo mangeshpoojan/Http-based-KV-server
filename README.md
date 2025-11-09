@@ -11,8 +11,8 @@ A Bash script (crud.sh) is included for quick command-line interaction with the 
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
+git clone https://github.com/mangeshpoojan/Http-based-KV-server
+cd Http-based-KV-server
 ```
 
 ### 2. Start MySQL and phpMyAdmin with Docker
