@@ -104,6 +104,14 @@ func (some *LRUCache) Set(key int, value string) {
 		lruKey := some.tail.key
 		some.removeNode(some.tail)
 		delete(some.cache, lruKey)
+
+		// WB the data to DB
+		if _, err := db.Exec("UPDATE kv_store SET value_col = ? WHERE key_col = ?", some.cache[some.tail.key], some.tail.key); err != nil {
+			panic(err)
+		}
+		if log == 1 {
+			fmt.Println("evicted :", some.tail.key)
+		}
 	}
 
 	// If key Doesn't exists
@@ -149,14 +157,6 @@ func (some *LRUCache) addToFront(node *Node) {
 }
 
 func (some *LRUCache) removeNode(node *Node) {
-
-	// WB the data to DB
-	if _, err := db.Exec("UPDATE kv_store SET value_col = ? WHERE key_col = ?", some.cache[node.key], node.key); err != nil {
-		panic(err)
-	}
-	if log == 1 {
-		fmt.Println("evicted :", node.key)
-	}
 
 	// remove the node
 	if node.prev != nil {
